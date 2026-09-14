@@ -1,0 +1,39 @@
+repos:
+  # Standard out-of-the-box checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+        args: ['--allow-multiple-documents'] # Crucial for Kubernetes manifests
+      - id: check-added-large-files
+      - id: detect-private-key             # First line of defense for secrets
+      - id: check-merge-conflict
+
+  # Terraform formatting and validation
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.86.0
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_validate
+      - id: terraform_trivy                  # Scans IaC for security issues
+
+  # Python formatting for your automation scripts
+  - repo: https://github.com/psf/black
+    rev: 24.2.0
+    hooks:
+      - id: black
+
+  # Go formatting for nexusctl CLI
+  - repo: https://github.com/golangci/golangci-lint
+    rev: v1.56.2
+    hooks:
+      - id: golangci-lint
+
+  # YAML Linting (Strict enforcement for K8s/Helm/Ansible)
+  - repo: https://github.com/adrienverge/yamllint.yaml
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+        args: ['-d', '{extends: relaxed, rules: {line-length: disable}}']

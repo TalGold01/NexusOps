@@ -1,0 +1,47 @@
+# Local environments & Secrets
+.env
+.env.*
+*.env
+*.tfvars
+*.tfvars.json
+*secret*
+*credentials*
+*.pem
+*.key
+certs/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+plan.out
+.terraform.lock.hcl
+
+# Python / AI Scripts
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.pytest_cache/
+
+# Go / CLI Tool (nexusctl)
+bin/
+obj/
+*.exe
+*.test
+vendor/
+
+# Ansible
+*.retry
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Kubernetes / Helm
+charts/
+*.tgz
